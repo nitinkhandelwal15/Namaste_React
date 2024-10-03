@@ -2,23 +2,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading3 = React.createElement("div", { id: "p1"},
-        [
-                React.createElement("div",
-                { id: "c1" },
-                        [
-                                React.createElement("h1", {}, " this is basically div > (div > h1*2)*2"), 
-                                React.createElement("h1", {}, " this is basically div > (div > h1*2)*2")
-                        ])
-                ,
-                React.createElement("div",
-                        { id: "c2" },
-                        [
-                                React.createElement("h1", {}, " this is basically div > (div > h1*2)*2"), 
-                                React.createElement("h1", {}, " this is basically div > (div > h1*2)*2")
-                        ])
-        ]
-        
+//const heading = <h1 className="C1">Hello World in JSX</h1>;
+
+const heading = (
+        <h1 className="JSXclass" tabIndex={1}>
+                Hello World in JSX...multiple lines
+        </h1>
 );
-const root3 = ReactDOM.createRoot(document.getElementById("root"));
-root3.render(heading3);
+
+const Title = () => (
+        <h1> This is Title component(functional component)
+                <p>This is Component Composition..basically Component ke ander component</p>
+        </h1>
+);
+
+const ComponentCompositionHeading = ()=> (
+        <div id="div1">
+                {Title()}
+                <Title/>
+                <Title></Title>
+        </div>
+)
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<ComponentCompositionHeading/>);
